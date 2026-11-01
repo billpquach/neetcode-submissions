@@ -8,6 +8,7 @@ find the bottleneck, plan, code, trace, analyze.
 | [`01-thinking-out-loud-framework.md`](01-thinking-out-loud-framework.md) | The 8-step spoken framework, phrase scripts, pattern-trigger table, recovery moves |
 | [`02-repo-review.md`](02-repo-review.md) | Strengths and gaps found in my NeetCode submissions, with fixes and likely follow-ups |
 | [`problems/add-two-numbers.md`](problems/add-two-numbers.md) | Full worked example: review of my submission → spoken interview → optimal → follow-ups |
+| [`problems/valid-palindrome-ii.md`](problems/valid-palindrome-ii.md) | Review of my submission: why fixed lookahead fails (counterexample), try-both fix, how to rewrite comments |
 | [`problems/_TEMPLATE.md`](problems/_TEMPLATE.md) | Copy this for any problem I got stuck on |
 
 ---
