@@ -154,6 +154,39 @@ This is the cheapest point to get redirected. Interviewers often hint here.
 
 ---
 
+## Fallback strategy: lock in partial credit
+
+A correct slow solution beats a fast broken one. Plan for this before the interview.
+
+**Time checkpoints (45-minute interview):**
+
+| Clock | If you have… | Do this |
+|-------|--------------|---------|
+| ~15 min | No optimal idea yet | **Code the brute force now.** Ask: *"I have a correct O(n²) approach. Can I code it so we have something working, then keep optimizing?"* Most interviewers say yes. |
+| ~15 min | An optimal idea you're confident in | Skip coding the brute force, but keep it described out loud as your backup. |
+| ~30 min | Optimal code that's mostly done | Trace it. Fix bugs out loud. |
+| ~35 min | Optimal code that's badly broken | **Stop digging.** Say: *"I'm going to switch to the brute force so we have a correct solution, then explain the fix for the optimal one."* |
+| Last 3 min | Anything | Narrate what's left: the bug, the fix, the complexity. Don't code in silence. |
+
+**How to make the fallback cheap:**
+- **Write shared helpers** (`is_pal`, `count`, `is_valid`) as separate functions.
+  The brute force and the optimal solution usually share them, so the upgrade is
+  a small change, not a rewrite.
+- **Keep the brute force simple enough to be obviously right**: slicing, nested
+  loops, `sorted()`. Don't optimize it.
+- **Use it as a test oracle.** Running both on the same example and getting the
+  same answer is a quick check of your optimal code.
+
+**Be honest about where the brute force stands:**
+> "This is O(n²), which would time out at n = 10⁵, but it's correct. The bottleneck
+> is ___, and here's my idea for removing it…"
+
+A working brute force plus a clear explanation of the optimal idea usually scores
+much better than a half-finished optimal solution. At most companies it's not a
+guaranteed pass on its own, but it keeps you in the running.
+
+---
+
 ## Recovering when things go wrong
 
 | Situation | What to say |

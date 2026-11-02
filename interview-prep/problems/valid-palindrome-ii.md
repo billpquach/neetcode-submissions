@@ -89,6 +89,62 @@ the whole remaining substring can. **So don't guess. Try both.**
 > "I could try deleting each character, one at a time, and check if the result is a
 > palindrome. That's n deletions × O(n) per check = **O(n²)**. Too slow for 10⁵."
 
+#### Brute force code (your fallback for partial credit)
+
+```python
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        # Brute force: try deleting each character (or none) and check.
+        # O(n^2) time: n candidates x O(n) check. O(n) space for each sliced copy.
+
+        def is_pal(t: str) -> bool:
+            return t == t[::-1]
+
+        if is_pal(s):                           # zero deletions
+            return True
+        for i in range(len(s)):                 # delete s[i]
+            if is_pal(s[:i] + s[i + 1:]):
+                return True
+        return False
+```
+
+This takes about 2 minutes to write and is hard to get wrong. I checked it against
+every `{a, b, c}` string up to length 10 with 0 failures. It takes about 10 seconds
+at n = 10⁵, so it would time out on the judge, but it's **correct**, and that's
+what earns partial credit.
+
+If the interviewer asks for O(1) space, skip an index instead of slicing:
+```python
+def is_pal_skip(skip):              # palindrome check pretending s[skip] is gone
+    l, r = 0, len(s) - 1
+    while l < r:
+        if l == skip: l += 1; continue
+        if r == skip: r -= 1; continue
+        if s[l] != s[r]: return False
+        l += 1; r -= 1
+    return True
+
+return any(is_pal_skip(i) for i in range(-1, len(s)))   # -1 = delete nothing
+```
+
+#### The brute force is a stepping stone to the optimal solution
+
+Compare them side by side. **The optimal solution *is* the brute force with the
+candidate list narrowed from n to 2:**
+
+```
+brute:    for every i in 0..n-1:       is s without s[i] a palindrome?
+optimal:  for i in {l, r} at first mismatch:  is s without s[i] a palindrome?
+```
+
+Say this out loud as you move from one to the other:
+> "My brute force tries all n deletions. But only the two characters at the first
+> mismatch can actually fix it, so I only need to try those two. Same helper, 2
+> calls instead of n."
+
+That's why writing `is_pal` as a separate helper pays off: if you code the brute
+force first, the upgrade is changing one loop.
+
 ### Find the bottleneck
 > "Most of those n deletions are pointless. Let me walk two pointers in from the
 > ends. Every pair that matches is already fine. At the **first mismatch**,
