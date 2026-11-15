@@ -9,6 +9,7 @@ find the bottleneck, plan, code, trace, analyze.
 | [`02-repo-review.md`](02-repo-review.md) | Strengths and gaps found in my NeetCode submissions, with fixes and likely follow-ups |
 | [`problems/add-two-numbers.md`](problems/add-two-numbers.md) | Full worked example: review of my submission → spoken interview → optimal → follow-ups |
 | [`problems/valid-palindrome-ii.md`](problems/valid-palindrome-ii.md) | Review of my submission: why fixed lookahead fails (counterexample), try-both fix, how to rewrite comments |
+| [`patterns/graph-traversal.md`](patterns/graph-traversal.md) | Grid/graph DFS & BFS: the numIslands template and the six adjustments for every NeetCode 150 graph problem |
 | [`problems/_TEMPLATE.md`](problems/_TEMPLATE.md) | Copy this for any problem I got stuck on |
 
 ---
